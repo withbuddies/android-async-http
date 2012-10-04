@@ -16,7 +16,7 @@
     limitations under the License.
 */
 
-package com.loopj.http;
+package com.loopj.http.android;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -29,6 +29,9 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.http.client.CookieStore;
 import org.apache.http.cookie.Cookie;
+
+import com.loopj.http.AsyncHttpClient;
+import com.loopj.http.SerializableCookie;
 
 
 import android.content.Context;

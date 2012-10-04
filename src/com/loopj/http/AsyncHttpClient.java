@@ -68,7 +68,6 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.protocol.SyncBasicHttpContext;
 
 
-
 /**
  * The AsyncHttpClient can be used to make asynchronous GET, POST, PUT and 
  * DELETE HTTP requests in your Android applications. Requests can be made
@@ -190,7 +189,7 @@ public class AsyncHttpClient {
 
     /**
      * Sets an optional CookieStore to use when making requests
-     * @param cookieStore The CookieStore implementation to use, usually an instance of {@link PersistentCookieStore}
+     * @param cookieStore The CookieStore implementation to use, usually an instance of {@link com.loopj.http.android.PersistentCookieStore}
      */
     public AsyncHttpClient setCookieStore(CookieStore cookieStore) {
         httpContext.setAttribute(ClientContext.COOKIE_STORE, cookieStore);
