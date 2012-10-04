@@ -1,10 +1,12 @@
-import org.json.*;
-import com.loopj.http.JsonHttpResponseHandler;
-import com.loopj.http.android.*;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.loopj.http.android.AndroidJsonResponseHandler;
 
 class TwitterRestClientUsage {
     public void getPublicTimeline() {
-        TwitterRestClient.get("statuses/public_timeline.json", null, new JsonHttpResponseHandler() {
+        TwitterRestClient.get("statuses/public_timeline.json", null, new AndroidJsonResponseHandler() {
             @Override
             public void onSuccess(JSONArray timeline) {
                 try {

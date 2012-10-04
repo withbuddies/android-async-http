@@ -11,11 +11,14 @@ public class TwitterRestClient {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        client.get(getAbsoluteUrl(url), params, responseHandler);
+//        client.get(getAbsoluteUrl(url), params, responseHandler);
+        client.new Transaction().get(url, responseHandler);
     }
 
     public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        client.get(getAbsoluteUrl(url), params, responseHandler);
+//        client.get(getAbsoluteUrl(url), params, responseHandler);
+        client.new Transaction().setParams(params).get(url, responseHandler);
+
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {

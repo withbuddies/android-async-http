@@ -310,7 +310,7 @@ public class AsyncHttpClient {
      * to support the various permutations of possible parameters to get() calls. This
      * class fixes that.
      */
-    class Transaction {
+    public class Transaction {
     	private RequestParams params = null;
     	public Transaction setParams(RequestParams params){this.params=params;return this;}
 
