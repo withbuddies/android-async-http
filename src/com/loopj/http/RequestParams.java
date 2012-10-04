@@ -16,7 +16,7 @@
     limitations under the License.
 */
 
-package com.loopj.android.http;
+package com.loopj.http;
 
 import java.io.InputStream;
 import java.io.File;
@@ -32,6 +32,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.message.BasicNameValuePair;
+
 
 /**
  * A collection of string request parameters or files to send along with
@@ -232,7 +233,7 @@ public class RequestParams {
         return lparams;
     }
 
-    protected String getParamString() {
+    public String getParamString() {
         return URLEncodedUtils.format(getParamsList(), ENCODING);
     }
 

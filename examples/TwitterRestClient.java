@@ -1,6 +1,9 @@
 // Static wrapper library around AsyncHttpClient
 
-import com.loopj.android.http.*;
+import com.loopj.http.AsyncHttpClient;
+import com.loopj.http.AsyncHttpResponseHandler;
+import com.loopj.http.RequestParams;
+import com.loopj.http.android.*;
 
 public class TwitterRestClient {
     private static final String BASE_URL = "http://api.twitter.com/1/";

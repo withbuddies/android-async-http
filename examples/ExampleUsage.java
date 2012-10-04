@@ -1,4 +1,6 @@
-import com.loopj.android.http.*;
+import com.loopj.http.AsyncHttpClient;
+import com.loopj.http.AsyncHttpResponseHandler;
+import com.loopj.http.android.*;
 
 public class ExampleUsage {
     public static void makeRequest() {

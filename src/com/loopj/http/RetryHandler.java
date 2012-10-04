@@ -21,7 +21,7 @@
     fantastic droid-fu project: https://github.com/donnfelker/droid-fu
 */
 
-package com.loopj.android.http;
+package com.loopj.http;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -32,14 +32,12 @@ import java.util.HashSet;
 import javax.net.ssl.SSLHandshakeException;
 
 import org.apache.http.NoHttpResponseException;
-import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.HttpRequestRetryHandler;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.protocol.ExecutionContext;
 import org.apache.http.protocol.HttpContext;
 
-import android.os.SystemClock;
-
-class RetryHandler implements HttpRequestRetryHandler {
+public class RetryHandler implements HttpRequestRetryHandler {
     private static final int RETRY_SLEEP_TIME_MILLIS = 1500;
     private static HashSet<Class<?>> exceptionWhitelist = new HashSet<Class<?>>();
     private static HashSet<Class<?>> exceptionBlacklist = new HashSet<Class<?>>();
@@ -95,11 +93,44 @@ class RetryHandler implements HttpRequestRetryHandler {
         }
 
         if(retry) {
-            SystemClock.sleep(RETRY_SLEEP_TIME_MILLIS);
+            sleep(RETRY_SLEEP_TIME_MILLIS);
         } else {
             exception.printStackTrace();
         }
 
         return retry;
+    }
+    
+    /**
+     * Waits a given number of milliseconds (of uptimeMillis) before returning.
+     * Similar to {@link java.lang.Thread#sleep(long)}, but does not throw
+     * {@link InterruptedException}; {@link Thread#interrupt()} events are
+     * deferred until the next interruptible operation.  Does not return until
+     * at least the specified number of milliseconds has elapsed.
+     * From android source: framework/base/core/java/android/os/SystemClock.java
+     *
+     * @param ms to sleep before returning, in milliseconds of uptime.
+     */
+    private static void sleep(long ms)
+    {
+        long start = System.currentTimeMillis();
+        long duration = ms;
+        boolean interrupted = false;
+        do {
+            try {
+                Thread.sleep(duration);
+            }
+            catch (InterruptedException e) {
+                interrupted = true;
+            }
+            duration = start + ms - System.currentTimeMillis();
+        } while (duration > 0);
+        
+        if (interrupted) {
+            // Important: we don't want to quietly eat an interrupt() event,
+            // so we make sure to re-interrupt the thread so that the next
+            // call to Thread.sleep() or Object.wait() will be interrupted.
+            Thread.currentThread().interrupt();
+        }
     }
 }

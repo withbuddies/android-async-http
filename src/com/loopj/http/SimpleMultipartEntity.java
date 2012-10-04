@@ -21,7 +21,7 @@
     http://blog.rafaelsanches.com/2011/01/29/upload-using-multipart-post-using-httpclient-in-android/
 */
 
-package com.loopj.android.http;
+package com.loopj.http;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
