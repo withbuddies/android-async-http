@@ -1,4 +1,4 @@
-<project default="package">
+<project name="android-async-http" default="package">
     <property file="local.properties"/>
     <property file="project.properties"/>
 
