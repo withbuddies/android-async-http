@@ -126,7 +126,7 @@ public class AndroidJsonResponseHandler extends AndroidResponseHandler {
         } else if(jsonResponse instanceof JSONArray) {
             onSuccess(statusCode, (JSONArray)jsonResponse);
         } else {
-            onFailure(new JSONException("Unexpected type " + jsonResponse.getClass().getName()));
+            onFailure(new JSONException("Unexpected type " + jsonResponse.getClass().getName()), (JSONObject)null);
         }
     }
 

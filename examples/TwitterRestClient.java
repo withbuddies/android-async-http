@@ -18,7 +18,6 @@ public class TwitterRestClient {
     public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
 //        client.get(getAbsoluteUrl(url), params, responseHandler);
         client.new Transaction().setParams(params).get(url, responseHandler);
-
     }
 
     private static String getAbsoluteUrl(String relativeUrl) {
