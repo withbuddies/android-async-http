@@ -1,6 +1,7 @@
 _site
 MANIFEST.MF
 *.jar
+*.iml
 build.num
 build
 local.properties
